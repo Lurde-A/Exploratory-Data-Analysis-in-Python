@@ -1,2 +1,63 @@
                         ASSESSING VARIABLE TYPES
-  1. 
+
+  1. The movies dataframe is composed of the television shows and movies hosted on the Netflix platform in 2019. Print the first five rows of the dataframe using the .head() method.
+//
+print(movies.head(5))                  RESULT:
+                                                Unnamed: 0	type	    title	            country	        release_year	  rating	  duration
+                                              0	0	          Movie	    Norm of the ...	  United States	  missing	        PG	      91.071
+                                              1	1	          Movie	    Jandino: Wha...	  United Kingdom	2016	          R	        94.516
+                                              2	2	          TV Show	  Transformers...	  United States	  2013	          G	        1.127
+                                              3	3	          TV Show	  Transformers...	  United States	  2016	          TV-14	    1.6869999999999998
+                                              4	4	          Movie	    #realityhigh...	  United States	  2017	          TV-14	    99.248
+  2. The rating variable describes the Motion Picture Association Film Rating Board rating for each film and the TV Parental Guidelines Monitoring Board rating for each television show. 
+We have consolidated the ratings for simplicity. Inspect the first five rows that were just printed out from the .head() method. Identify whether the rating variable is quantitative or
+categorical and assign the value of 'numerical' or 'categorical' to a variable called rating_variable_type.
+//
+rating_variable_type = 'categorical'
+print(rating_variable_type)            RESULT:  'categorical'
+
+                        CATEGORICAL VARIABLES
+
+  3. Run the code in the workspace to view the first five rows of the movies dataframe.
+//
+print(movies.head(5))                  RESULT:
+                                                show_id	  type	    title	                country	        release_year	rating	  duration	  cast_count	  est_budget (USD)
+                                              0	s1	      Movie	    Dick Johnson Is Dead	United States	  2020	        PG-13	    90 min	    nan	          11959075
+                                              1	s2	      TV Show	  Blood & Water	        South Africa	  2021	        TV-MA    	2 Seasons	  19.0	        9436627
+                                              2	s3	      TV Show	  Ganglands	            nan	            2021	        TV-MA    	1 Season	  9.0	          5719277
+                                              3	s4	      TV Show	  Jailbirds New Orleans	nan	            2021	        TV-MA	    1 Season	  nan	          7881417
+                                              4	s5	      TV Show	  Kota Factory	        India	          2021	        TV-MA	    2 Seasons	  8.0	          27387486
+  4. Print the unique values of the country column to assess its variable type.
+//
+print(movies['country'].unique())      RESULT:
+                                                ['United States' 'South Africa' nan 'India'
+                                                'United States, Ghana, Burkina Faso, United Kingdom, Germany, Ethiopia'
+                                                'United Kingdom' 'Germany, Czech Republic' 'Mexico' 'Turkey' 'Australia'
+                                                'United States, India, France' 'Finland' 'China, Canada, United States'
+                                                ...]
+  5. Identify whether the country column is ordinal or nominal and assign the value of country_variable_type to either 'ordinal', 'nominal', or 'binary'.
+//
+country_variable_type = 'nominal'
+
+                        QUANTITATIVE VARIABLES
+
+  6. Run the code in the workspace to view the first five rows of the movies dataframe.
+//
+print(movies.head(5))                  RESULT:
+                                                show_id	  type	    title	                country	        release_year	rating	  duration	  cast_count	  est_budget (USD)
+                                              0	s1	      Movie	    Dick Johnson Is Dead	United States	  2020	        PG-13	    90 min	    nan	          11959075
+                                              1	s2	      TV Show	  Blood & Water	        South Africa	  2021	        TV-MA    	2 Seasons	  19.0	        9436627
+                                              2	s3	      TV Show	  Ganglands	            nan	            2021	        TV-MA    	1 Season	  9.0	          5719277
+                                              3	s4	      TV Show	  Jailbirds New Orleans	nan	            2021	        TV-MA	    1 Season	  nan	          7881417
+                                              4	s5	      TV Show	  Kota Factory	        India	          2021	        TV-MA	    2 Seasons	  8.0	          27387486
+  7. The release_year variable expresses the year that a movie or television show was originally released. Inspect the first five rows of the dataset that were printed, and identify 
+whether this column is discrete or continuous. From this inspection, assign the value of release_year_variable_type to either 'discrete' or 'continuous'.
+//
+release_year_variable_type = 'discrete'
+print(release_year_variable_type)                  RESULT: discrete
+  8. The cast_count variable describes how many cast members are in the show. Inspect the first five rows of the printed dataset, and identify whether this column is discrete or continuous.
+From this inspection, assign the value of cast_count_variable_type to either 'discrete' or 'continuous'.
+//
+cast_count_variable_type = 'discrete'
+print(cast_count_variable_type)                    RESULT: discrete
+
