@@ -61,3 +61,7 @@ From this inspection, assign the value of cast_count_variable_type to either 'di
 cast_count_variable_type = 'discrete'
 print(cast_count_variable_type)                    RESULT: discrete
 
+                        CHANGING NUMERICAL VARIABLE DATA TYPES
+
+  9. Run the code in the workspace to view the first five rows of the movies dataframe.
+//
