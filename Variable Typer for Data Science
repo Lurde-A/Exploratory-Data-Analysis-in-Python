@@ -117,3 +117,59 @@ print(movies.dtypes)                  RESULT:
                                               cast_count	        int64
                                               est_budget (USD)	  int64
 
+                        CHANGING CATEGORICAL VARIABLE DATA TYPES
+GIVEN:
+import codecademylib3
+# Import pandas with alias
+import pandas as pd
+# Import dataset as a Pandas dataframe
+movies = pd.read_csv("netflix_movies.csv")
+# View the first five rows of the dataframe
+print(movies.head())
+  14. Run the code in the workspace to view the first five rows of the movies dataframe.
+//
+print(movies.head(5))                  RESULT:
+                                                show_id	  type	    title	                country	        release_year	rating	  duration	  cast_count	  est_budget (USD)
+                                              0	s1	      Movie	    Dick Johnson Is Dead	United States	  2020	        PG-13	    90 min	    0.0	          11959075
+                                              1	s2	      TV Show	  Blood & Water	        South Africa	  2021	        TV-MA    	2 Seasons	  19.0	        9436627
+                                              2	s3	      TV Show	  Ganglands	            nan	            2021	        TV-MA    	1 Season	  9.0	          5719277
+                                              3	s4	      TV Show	  Jailbirds New Orleans	nan	            2021	        TV-MA	    1 Season	  0.0  	        7881417
+                                              4	s5	      TV Show	  Kota Factory	        India	          2021	        TV-MA	    2 Seasons	  8.0	          27387486
+  15. Check the data types of all the categorical variables in the movies DataFrame. Make sure to print the data types to the console.
+//
+print(movies.dtypes)                  RESULT:
+                                                                	0
+                                              show_id	            object
+                                              type	              object
+                                              title	              object
+                                              country	            object
+                                              release_year      	int64
+                                              rating	            object
+                                              duration	          object
+                                              cast_count	        float64
+                                              est_budget (USD)	  int64
+  16. Decide which variables you are going to change. We decided that title must be changed. Make a list of all the variables you plan to change in the change variable. It is ok 
+if title is the only one you want to change. Open the Hint to check your logic.
+//
+Country may also be changed, BUT:
+title is best represented by a string since we might want to perform string operations on it.
+type, country, and rating are all codes, so they can remain as objects. However, if we needed to standardize them (i.e., make them all lowercase), they would need to be strings.
+  17. Change the title variable to the "string" data type.
+//
+movies['title'] = movies['title'].astype('string')
+  18. Change any other variables. Note that simply running the code again will allow you to pass this checkpoint.
+//
+movies['country'] = movies['country'].astype('string')
+  19. Print the updated data types to the screen.
+//
+print(movies.dtypes)                  RESULT:
+                                                                	0
+                                              show_id	            object
+                                              type	              object
+                                              title	              string
+                                              country	            string
+                                              release_year      	int64
+                                              rating	            object
+                                              duration	          object
+                                              cast_count	        float64
+                                              est_budget (USD)	  int64
