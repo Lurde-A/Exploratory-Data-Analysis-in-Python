@@ -173,3 +173,33 @@ print(movies.dtypes)                  RESULT:
                                               duration	          object
                                               cast_count	        float64
                                               est_budget (USD)	  int64
+
+                        THE PANDAS CATEGORY DATA TYPE
+
+GIVEN:
+import codecademylib3
+# Import pandas with alias
+import pandas as pd
+# Import dataset as a Pandas Dataframe
+movies = pd.read_csv('netflix_movies.csv')
+# View the first five rows of the dataframe
+print(movies.head())
+  20. Run the code in the workspace to print the first five rows of the movies DataFrame along with the unique values of the rating column.
+//
+print(movies.head(5))                  RESULT:
+                                                show_id	  type	    title	                country	        release_year	rating	  duration	  cast_count	  est_budget (USD)
+                                              0	s1	      Movie	    Dick Johnson Is Dead	United States	  2020	        PG-13	    90 min	    nan	          24879482
+                                              1	s2	      TV Show	  Blood & Water	        South Africa	  2021	        R	        2 Seasons	  19.0	        45905454
+                                              2	s3	      TV Show	  Ganglands	            nan	            2021	        R	        1 Season	  9.0	          81636844
+                                              3	s4	      TV Show	  Jailbirds New Orleans	nan	            2021	        R        	1 Season	  nan	          46693301
+                                              4	s5	      TV Show	  Kota Factory	        India	          2021	        R	        2 Seasons	  8.0	          73334474
+  21. Change the data type of the rating variable to categorical. Set an order of [‘NR’, ‘G’ , ‘PG’, ‘PG-13’, ‘R’].
+//
+movies['rating'] = pd.Categorical(movies['rating'],['NR', 'G' , 'PG', 'PG-13', 'R'], ordered=True)
+                                      RESULT: [5 rows x 9 columns]
+                                              ['PG-13' 'R' 'PG' 'G' 'NR']
+  22. Check the new order of the categories with .unique(). Make sure to print the output.
+//
+print(movies['rating'].unique())
+                                      RESULT: [PG-13, R, PG, G, NR]
+                                              Categories (5, object): [NR < G < PG < PG-13 < R]
