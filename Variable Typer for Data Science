@@ -203,3 +203,58 @@ movies['rating'] = pd.Categorical(movies['rating'],['NR', 'G' , 'PG', 'PG-13', '
 print(movies['rating'].unique())
                                       RESULT: [PG-13, R, PG, G, NR]
                                               Categories (5, object): [NR < G < PG < PG-13 < R]
+
+                        ONE-HOT ENCODING
+
+GIVEN:
+import codecademylib3
+# Import pandas with alias
+import pandas as pd
+# Import dataset as a Pandas Dataframe
+cereal = pd.read_csv('cereal.csv', index_col=0)
+# Show the first five rows of the `cereal` dataframe
+print(cereal.head())
+  23. Run the code in the workspace to view the first five rows of the cereal dataframe.
+//
+print(cereal.head(5))                  RESULT:
+                                                name	                    mfr	                type	  fiber	  rating	  shelf	  vitamins	  coupons	  price
+                                              0	100% Bran	                Nestle	            C	      10.0	  68.4	    top	    25	        4	        4.06
+                                              1	100% Natural              Bran	Quaker Oats	  C	      2.0	    33.98	    top	    0          	1	        4.62
+                                              2	All-Bran	                Kelloggs	          C	      9.0	    59.43	    top	    25        	3	        4.39
+                                              3	All-Bran with Extra Fiber	Kelloggs	          C	      14.0	  93.7	    top	    25	        2	        6.18
+                                              4	Almond Delight	          Ralston Purina	    C	      1.0	    34.38	    top	    25	        2	        6.05
+  24. One-Hot Encode the mfr variable with pd.get_dummies().
+  25. Check the new variables by printing the first five rows of the cereal dataframe. Make sure to scroll to the right to view all of the variables.
+//
+cereal = pd.get_dummies(data=cereal, columns=['mfr'])
+print(cereal.head())                  RESULT:
+    name	                    type	fiber	rating	shelf	vitamins	coupons	price	mfr_American Home	mfr_General Mills	mfr_Kelloggs	mfr_Nestle	mfr_Post	mfr_Quaker Oats	mfr_Ralston Purina
+0	  100% Bran	                C	    10.0	68.4	  top	  25	      4	      4.06	0	                0               	0	            1	          0	        0	              0
+1	  100% Natural Bran	        C	    2.0	  33.98	  top	  0	        1	      4.62	0	                0	              	0	            0	          0	        1	              0
+2	  All-Bran	                C	    9.0	  59.43	  top	  25	      3	      4.39	0	                0	              	1	            0	          0	        0	              0
+3	  All-Bran with Extra Fiber	C	    14.0	93.7	  top	  25	      2	      6.18	0	                0	              	1	            0	          0	        0	              0
+4	  Almond Delight	          C	    1.0	  34.38	  top	  25	      2	      6.05	0	                0	              	0	            0	          0	        0	              1
+
+                        VARIABLE TYPES REVIEW
+
+GIVEN:
+import codecademylib3
+# Import pandas with alias
+import pandas as pd
+# Import dataset as a Pandas Dataframe
+auto = pd.read_csv('autos.csv', index_col=0)
+  1. Return the first 10 rows of the auto dataframe.
+print(auto.head(10))                  RESULT:
+                                                  make	      body-style	length	width	city-mpg	price	num-of-cylinders	two_door	engine_size
+                                              0	  alfa-romero	convertible	168.8	  64.1	21.0	    13495	4	                1	        medium
+                                              1	  alfa-romero	convertible	168.8	  64.1	21.0	    16500	4	                1	        medium
+                                              2	  alfa-romero	hatchback	  171.2	  65.5	19.0	    16500	6	                1	        medium
+                                              3	  audi	      sedan	      176.6  	66.2	24.0	    13950	4	                0	        medium
+                                              4	  audi	      sedan	      176.6	  66.4	18.0	    17450	5	                0        	medium
+                                              5	  audi	      sedan	      177.3	  66.3	19.0	    15250	5	                1        	medium
+                                              6	  audi	      sedan	      192.7	  71.4	19.0	    17710	5	                0        	medium
+                                              7	  audi	      wagon	      192.7	  71.4	19.0	    18920	5	                0        	medium
+                                              8	  audi	      sedan	      192.7	  71.4	17.0	    23875	5	                0	        medium
+                                              10	bmw	        sedan	      176.8	  64.8	23.0	    16430	4	                1	        medium
+  2. Return the data types of the auto dataframe with the .dtypes attribute.
+//
