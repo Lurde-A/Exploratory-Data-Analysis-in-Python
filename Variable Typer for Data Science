@@ -258,3 +258,56 @@ print(auto.head(10))                  RESULT:
                                               10	bmw	        sedan	      176.8	  64.8	23.0	    16430	4	                1	        medium
   2. Return the data types of the auto dataframe with the .dtypes attribute.
 //
+print(auto.dtypes)                    RESULT:
+                                                  	              0
+                                              make	              object
+                                              body-style	        object
+                                              length	            float64
+                                              width	              float64
+                                              city-mpg	          float64
+                                              price	              int64
+                                              num-of-cylinders  	int64
+                                              two_door	          object
+                                              engine_size	        object
+  3. Change the price category from int to float with the .astype() method, then recheck the data types with .dtypes.
+//
+auto['price'] = auto['price'].astype('float')
+print(auto.dtypes)                    RESULT:
+                                                  	              0
+                                              make	              object
+                                              body-style	        object
+                                              length	            float64
+                                              width	              float64
+                                              city-mpg	          float64
+                                              price	              float64
+                                              num-of-cylinders  	int64
+                                              two_door	          object
+                                              engine_size	        object
+  4. Convert the engine_size variable to the category data type with an order of [‘small’, ‘medium’, ‘large’], and check the order with the .unique() method.
+//
+auto['engine_size'] = pd.Categorical(auto['engine_size'],['small', 'medium', 'large'], ordered=True)
+print(auto['engine_size'].unique())   RESULT:
+                                              [medium, small, large]
+                                              Categories (3, object): [small < medium < large]
+  5. Create a new variable called engine_codes which contains the numerical codes associated with each category in the engine_size variable with the .cat.codes accessor. 
+Check the new values with the .head() method.
+//
+auto['engine_codes'] = auto['engine_size'].cat.codes
+print(auto.head())                    RESULT:
+                                                  make	      body-style	length	width	city-mpg	price	    num-of-cylinders	two_door	engine_size	engine_codes
+                                              0	  alfa-romero	convertible	168.8  	64.1	21.0	    13495.0	  4	                1	        medium	    1
+                                              1	  alfa-romero	convertible	168.8  	64.1	21.0	    16500.0	  4	                1	        medium	    1
+                                              2	  alfa-romero	hatchback	  171.2  	65.5	19.0	    16500.0	  6	                1	        medium	    1
+                                              3	  audi	      sedan	      176.6  	66.2	24.0	    13950.0	  4	                0	        medium	    1
+                                              4	  audi	      sedan	      176.6  	66.4	18.0	    17450.0	  5	                0	        medium	    1
+  6. One-Hot Encode the body-style category in the auto dataframe. Then check the dataframe with .head().
+//
+auto = pd.get_dummies(data = auto, columns=['body-style'])
+print(auto.head())                    RESULT:
+                                                  make	      length	width	city-mpg	price	    num-of-cylinders	two_door	engine_size	engine_codes	body-style_convertible	body-style_hardtop	body-style_hatchback	body-style_sedan	body-style_wagon
+                                              0	  alfa-romero	168.8	  64.1	21.0	    13495.0	  4	                1	        medium	    1	            1	                      0	                  0	                    0	                0
+                                              1	  alfa-romero	168.8	  64.1	21.0	    16500.0	  4	                1	        medium	    1	            1	                      0	                  0	                    0	                0
+                                              2	  alfa-romero	171.2	  65.5	19.0	    16500.0	  6	                1	        medium	    1	            0	                      0	                  1	                    0	                0
+                                              3	  audi	      176.6	  66.2	24.0	    13950.0	  4	                0	        medium	    1	            0	                      0	                  0	                    1	                0
+                                              4	  audi	      176.6	  66.4	18.0	    17450.0	  5	                0	        medium	    1	            0	                      0	                  0	                    1	                0
+
