@@ -127,4 +127,4 @@ print(census['marital_codes'].head(10))              RESULT:
               --- Create a new variable called age_group, which groups respondents based on their birth year. The groups should be in five-year increments, e.g., 25-30, 31-35, etc. 
 Then label encode the age_group variable to assist the Census team in the event they would like to use machine learning to predict if a respondent thinks the wealthy should pay 
 higher taxes based on their age group.
-//
+
