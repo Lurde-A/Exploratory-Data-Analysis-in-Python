@@ -93,7 +93,10 @@ print(census.head())                            RESULT:
                                                         2	Salomon	    Orn	        1992	      True	  2            	166313.45	  3	          0	                        0	                        1	                      0
                                                         3	Sarina	    Schiller  	1965	      False	  2            	71704.81	  4	          0	                        1	                        0	                      0
                                                         4	Gust	      Abernathy	  1945	      False	  2	            143316.08	  3	          0	                        1	                        0	                      0
-  11. 
+  11. Congratulations! You have used your variable skills to help the census team with managing their data. Feel free to explore the data further. There are additional operations 
+you can perform on the data, such as:
+              --- Create a new variable called marital_codes by Label Encoding the marital_status variable. This could help the Census team use machine learning to predict if a respondent 
+                  thinks the wealthy should pay higher taxes based on their marital status.
 //
 census['marital_status'] = pd.Categorical(census['marital_status'], ['single', 'married', 'divorced', 'widowed'], ordered=True)
 census['marital_codes'] = census['marital_status'].cat.codes
@@ -121,4 +124,7 @@ print(census['marital_codes'].head(10))              RESULT:
                                                         7	0
                                                         8	0
                                                         9	1
-  12. 
+              --- Create a new variable called age_group, which groups respondents based on their birth year. The groups should be in five-year increments, e.g., 25-30, 31-35, etc. 
+Then label encode the age_group variable to assist the Census team in the event they would like to use machine learning to predict if a respondent thinks the wealthy should pay 
+higher taxes based on their age group.
+//
