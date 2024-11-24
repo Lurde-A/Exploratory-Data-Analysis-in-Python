@@ -1,0 +1,21 @@
+You are a data scientist exploring data that looks at how certain diagnostic factors affect the diabetes outcome of women patients.
+The dataset is from the National Institute of Diabetes and Digestive and Kidney Diseases. It contains the following columns:
+  -  Pregnancies: Number of times pregnant
+  -  Glucose: Plasma glucose concentration at 2 hours in an oral glucose tolerance test
+  -  BloodPressure: Diastolic blood pressure
+  -  SkinThickness: Triceps skinfold thickness
+  -  Insulin: 2-Hour serum insulin
+  -  BMI: Body mass index
+  -  DiabetesPedigreeFunction: Diabetes pedigree function
+  -  Age: Age (years)
+  -  Outcome: Class variable (0 or 1)
+
+  1. First, familiarize yourself with the dataset below. Look at each of the nine columns in the documentation. What do you expect each data type to be?
+//
+Pregnancies    Glucose    BloodPressure    SkinThickness    Insulin    BMI    DiabetesPedigreeFunction    Age    Outcome
+6              148        72               35               0          33.6   0.627                       50     1
+1              85         66               29               0          26.6   0.351                       31     0
+8              183        64               0                0          23.3   0.672                       32     1
+1              89         66               23               94         28.1   0.167                       21     0
+0              137        40               35               168        43.1   2.288                       33     1
+  2. 
