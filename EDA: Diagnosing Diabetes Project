@@ -10,6 +10,7 @@ The dataset is from the National Institute of Diabetes and Digestive and Kidney 
   -  Age: Age (years)
   -  Outcome: Class variable (0 or 1)
 
+                                INITIAL INSPECTION
   1. First, familiarize yourself with the dataset below. Look at each of the nine columns in the documentation. What do you expect each data type to be?
 //
 Pregnancies    Glucose    BloodPressure    SkinThickness    Insulin    BMI    DiabetesPedigreeFunction    Age    Outcome
@@ -18,4 +19,44 @@ Pregnancies    Glucose    BloodPressure    SkinThickness    Insulin    BMI    Di
 8              183        64               0                0          23.3   0.672                       32     1
 1              89         66               23               94         28.1   0.167                       21     0
 0              137        40               35               168        43.1   2.288                       33     1
-  2. 
+5              116        74               0                0          25.6   0.201                       30     0
+3              78         50               32               88         31     0.248                       26     1
+10             115        0                0                0          35.3   0.134                       29     0
+  2. Next, let’s load in the diabetes data to start exploring. Load the data in a variable called diabetes_data and print the first few rows. Note: The data is stored 
+in a file called diabetes.csv.
+//
+diabetes_data = pd.read_csv('diabetes.csv')
+print(diabetes_data.head())                      RESULT:
+                                      	Pregnancies	  Glucose	  BloodPressure	  SkinThickness	  Insulin	  BMI	  DiabetesPedigreeFunction	  Age  	Outcome
+                                      0	6            	148	      72	            35            	0	        33.6 	0.627	                      50	  1
+                                      1	1	            85	      66	            29	            0	        26.6	0.35100000000000003	        31	  0
+                                      2	8	            183	      64	            0	              0	        23.3	0.672                      	32	  1
+                                      3	1	            89	      66	            23	            94      	28.1	0.16699999999999998	        21	  0
+                                      4	0	            137	      40	            35            	168      	43.1	2.2880000000000003	        33	  1
+  3. How many columns (features) does the data contain?
+//
+print(len(diabetes_data.columns))                RESULT:
+                                      	9
+  4. How many rows (observations) does the data contain?
+//
+print(len(diabetes_data))                        RESULT:
+                                      	768
+
+                                FURTHER INSPECTION
+  5. Let’s inspect diabetes_data further. Do any of the columns in the data contain null (missing) values?
+//
+print(diabetes_data.isnull().sum())              RESULT:
+                                                              	0
+                                      Pregnancies	              0
+                                      Glucose	                  0
+                                      BloodPressure	            0
+                                      SkinThickness	            0
+                                      Insulin	                  0
+                                      BMI	                      0
+                                      DiabetesPedigreeFunction	0
+                                      Age	                      0
+                                      Outcome	                  0
+  6. If you answered no to the question above, not so fast! While it’s technically true that none of the columns contain null values, that doesn’t necessarily mean that the data isn’t 
+missing any values. When exploring data, you should always question your assumptions and try to dig deeper. To investigate further, calculate summary statistics on diabetes_data using 
+the .describe() method.
+//
