@@ -83,5 +83,83 @@ diabetes_data[['Glucose','BloodPressure','SkinThickness','Insulin','BMI']] = dia
 diabetes_data[['Glucose','BloodPressure','SkinThickness','Insulin','BMI']] = diabetes_data[['Glucose','BloodPressure','SkinThickness','Insulin','BMI']].replace(0,np.nan)
   10. Next, check for missing (null) values in all of the columns just like you did in Step 5. Now how many missing values are there?
 //
-print(diabetes_data.isnull().sum())
-print(diabetes_data.info())
+print(diabetes_data.isnull().sum())              RESULT:
+                                                              	0
+                                      Pregnancies              	0
+                                      Glucose	              	  5
+                                      BloodPressure	            35
+                                      SkinThickness	            227
+                                      Insulin	              	  374
+                                      BMI	              	      11
+                                      DiabetesPedigreeFunction	0
+                                      Age	              	      0
+                                      Outcome	              	  0
+print(diabetes_data.info())                      RESULT:
+                                      <class 'pandas.core.frame.DataFrame'>
+                                      RangeIndex: 768 entries, 0 to 767
+                                      Data columns (total 9 columns):
+                                      Pregnancies                 768 non-null int64
+                                      Glucose                     763 non-null float64
+                                      BloodPressure               733 non-null float64
+                                      SkinThickness               541 non-null float64
+                                      Insulin                     394 non-null float64
+                                      BMI                         757 non-null float64
+                                      DiabetesPedigreeFunction    768 non-null float64
+                                      Age                         768 non-null int64
+                                      Outcome                     768 non-null object
+                                      dtypes: float64(6), int64(2), object(1)
+                                      memory usage: 54.1+ KB
+                                      None
+  11. Let’s take a closer look at these rows to get a better idea of why some data might be missing. Print out all of the rows that contain missing (null) values.
+//
+print(diabetes_data[diabetes_data.isnull().any(axis=1)])
+                                                  RESULT:
+                                          	Pregnancies	Glucose	BloodPressure	SkinThickness	Insulin	BMI	  DiabetesPedigreeFunction	Age	Outcome
+                                          0	6	          148.0	  72.0	        35.0	        nan	    33.6	0.627	                    50	1
+                                          1	1          	85.0	  66.0	        29.0	        nan	    26.6	0.35100000000000003	      31	0
+                                          2	8	          183.0	  64.0	        nan	          nan	    23.3	0.672	                    32	1
+                                          5	5          	116.0	  74.0	        nan	          nan	    25.6	0.201	                    30	0
+                                          7	10        	115.0	  nan	          nan	          nan	    35.3	0.134	                    29	0
+                                          9	8	          125.0	  96.0	        nan          	nan	    nan	  0.23199999999999998      	54	1
+  12. Go through the rows with missing data. Do you notice any patterns or overlaps between the missing data?
+//
+Most of the missing data is from the column "Insulin" and some rows have missing data in other columns too. 
+"One thing you might notice is that most rows with missing data have missing values in more than one column. In fact, every single row with at least one missing value also has a missing 
+value in the insulin column. This is a clue as to why this data is missing! If patients did not have their insulin measured, why might they also not have had these other measurements taken?
+Depending on how much data is missing, you might choose to remove specific rows or impute the missing values somehow."
+  13. Next, take a closer look at the data types of each column in diabetes_data. Does the result match what you would expect?
+//
+print(diabetes_data.dtypes)                      RESULT:
+                                                              	0
+                                      Pregnancies	              int64
+                                      Glucose	                  float64
+                                      BloodPressure	            float64
+                                      SkinThickness	            float64
+                                      Insulin	                  float64
+                                      BMI	                      float64
+                                      DiabetesPedigreeFunction	float64
+                                      Age	                      int64
+                                      Outcome	                  object
+I gues Glucose, BloodPressure and SkinThickness could also be int data type. Also, not sure why Outcome is object.
+  14. To figure out why the Outcome column is of type object (string) instead of type int64, print out the unique values in the Outcome column.
+//
+print(diabetes_data['Outcome'].unique())        RESULT:
+                                                ['1' '0' 'O']
+  15. How might you resolve this issue?
+// 
+Replace 'O' with '0' and convert Outcome to int64 data type.
+diabetes_data['Outcome'] = diabetes_data['Outcome'].replace(['O'], '0')
+print(diabetes_data['Outcome'].unique())        RESULT:
+                                      ['1' '0']
+diabetes_data['Outcome'] = diabetes_data['Outcome'].astype('int64')
+print(diabetes_data.dtypes)                     RESULT:                            
+                                                              	0
+                                      Pregnancies	              int64
+                                      Glucose	                  float64
+                                      BloodPressure	            float64
+                                      SkinThickness	            float64
+                                      Insulin                  	float64
+                                      BMI	                      float64
+                                      DiabetesPedigreeFunction	float64
+                                      Age	                      int64
+                                      Outcome                  	int64
