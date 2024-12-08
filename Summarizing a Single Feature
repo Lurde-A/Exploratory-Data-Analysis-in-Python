@@ -1,1 +1,54 @@
+                                INTRODUCTION
+  1. In script.py, we’ve imported a dataset containing information on the budget and earnings of movies from various genres into a DataFrame called movies. Start by inspecting the first 
+5 rows of movies using the .head() method and print the result. How many quantitative and categorical variables do you see?
+//
+print(movies.head(5))                                          RESULT:
+                                                movie	                            production_budget	domestic_gross	worldwide_gross	mpaa_rating	genre
+                                              0	Evan Almighty	                    175000000.0	      100289690.0	    174131329.0	    PG	        Comedy
+                                              1	Waterworld	                      175000000.0	      88246220.0	    264246220.0	    PG-13	      Action
+                                              2	King Arthur: Legend of the Sword	175000000.0	      39175066.0	    139950708.0	    PG-13	      Adventure
+                                              3	47 Ronin	                        175000000.0	      38362475.0	    151716815.0    	PG-13	      Action
+                                              4	Jurassic World: Fallen Kingdom  	170000000.0	      416769345.0	    1304866322.0	  PG-13	      Action
+  2. Use the .describe() method to display the summary statistics for movies and print the result. Make sure to show statistics for all columns in the DataFrame. What kinds of metrics 
+are displayed for quantitative columns versus categorical columns?
+//
+print(movies.describe(include='all'))                          RESULT:
+                                                      movie	          production_budget	  domestic_gross    	worldwide_gross	    mpaa_rating	  genre
+                                              count	  3401	          3401.0	            3401.0	            3401.0	            3264	        3401
+                                              unique	3400	          nan	                nan	                nan	                4	            5
+                                              top	    Tau ming chong	nan	                nan	                nan	                R	            Drama
+                                              freq	  2	              nan	                nan	                nan                	1514        	1236
+                                              mean	  nan	            33284743.23640106	  45421793.455160245	94115117.21581888	  nan	          nan
+                                              std	    nan	            34892390.5907742	  58825660.55847577  	140918241.81594074	nan	          nan
+                                              min	    nan	            250000.0	          0.0	                0.0	                nan	          nan
+                                              25%	    nan	            9000000.0	          6118683.0	          10618813.0        	nan	          nan
+                                              50%	    nan	            20000000.0        	25533818.0        	40159017.0        	nan	          nan
+                                              75%	    nan	            45000000.0        	60323786.0	        117615211.0        	nan	          nan
+                                              max	    nan	            175000000.0        	474544677.0        	1304866322.0      	nan	          nan
 
+                                CENTRAL TENDENCY FOR QUANTITATIVE DATA
+  3. Using the same movies DataFrame from the last exercise, find the mean production_budget for all movies and save it to a variable called mean_budget. Print mean_budget to see the result.
+//
+mean_budget = movies.production_budget.mean()
+print(mean_budget)
+  4. Save the median budget to a variable called med_budget and print the result.
+//
+med_budget = movies.production_budget.median()
+print(med_budget)                                               RESULT: 20000000.0
+  5. Save the mode to a variable called mode_budget and print the result. How do the mean, median, and mode of movie budgets compare to each other?
+//
+mode_budget = movies.production_budget.mode()
+print(mode_budget)                                              RESULT: 20000000.0
+  6. Find the mean of the budget after removing 20% of the lowest and highest data points. Save the trimmed mean to a variable called trmean_budget and print the result.
+How does trimming the most extreme data points affect the mean budget?
+//
+from scipy.stats import trim_mean
+trmean_budget = trim_mean(movies.production_budget, proportiontocut = 0.2)
+print(trmean_budget)
+
+                                SPREAD FOR QUANTITATIVE DATA
+  7. Using the movies DataFrame, find the range for production_budget and save it to a variable called range_budget. Print range_budget to see the result.
+//
+range_budget = movies.production_budget.max() - movies.production_budget.min()
+print(range_budget)                                             RESULT: 174750000.0
+  8. 
