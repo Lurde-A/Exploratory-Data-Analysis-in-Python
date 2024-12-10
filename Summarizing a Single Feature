@@ -51,4 +51,12 @@ print(trmean_budget)
 //
 range_budget = movies.production_budget.max() - movies.production_budget.min()
 print(range_budget)                                             RESULT: 174750000.0
-  8. 
+  8. Save the interquartile range for budget to a variable called iqr_budget and print the result.
+//
+iqr_budget = movies.production_budget.quantile(0.75) - movies.production_budget.quantile(0.25)
+print(iqr_budget)                                               RESULT: 36000000.0
+  9. Save the variance to a variable called var_budget and print the result.
+//
+var_budget = movies.production_budget.var()
+print(var_budget)                                               RESULT: 1217478921139147.8
+  10. 
