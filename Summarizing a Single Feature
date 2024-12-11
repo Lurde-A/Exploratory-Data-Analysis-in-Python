@@ -80,3 +80,38 @@ plt.close()
 sns.histplot(x='production_budget', data=movies)
 plt.show()
 plt.close()
+
+                                VALUE COUNTS FOR CATEGORICAL VARIABLE
+  14. Using the movies DataFrame, find the number of movies in each genre and save the counts to a variable called genre_counts. Print genre_counts to see the result.
+//
+genre_counts = movies.genre.value_counts()
+print(genre_counts)                                               RESULT: Drama        1236
+                                                                          Comedy        813
+                                                                          Action        573
+                                                                          Adventure     481
+                                                                          Horror        298
+                                                                          Name: genre, dtype: int64
+
+                                VALUE PROPORTIONS FOR CATEGORICAL DATA
+  15. Using the movies DataFrame, find the proportion of movies in each genre and save them to a variable called genre_props. Print genre_props to see the result.
+//
+genre_props = movies.genre.value_counts(normalize=True)
+print(genre_props)                                               RESULT: Drama        0.363423
+                                                                         Comedy       0.239047
+                                                                         Action       0.168480
+                                                                         Adventure    0.141429
+                                                                         Horror       0.087621
+                                                                         Name: genre, dtype: float64
+
+                                VISUALIZING CATEGORICAL VARIABLES
+  16. Using the movies DataFrame, create a bar chart for genre using the countplot() function from seaborn. Don’t forget to display the plot using plt.show() and close the plot 
+using plt.close().
+//
+sns.countplot(x='genre', data=movies)
+plt.show()
+plt.close()
+  17. Create a pie chart for genre using the .pie() method from pandas. From the plots, what do you notice about the relative frequencies of movie genres?
+//
+movies.genre.value_counts().plot.pie()
+plt.show()
+plt.close()
