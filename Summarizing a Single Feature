@@ -59,4 +59,24 @@ print(iqr_budget)                                               RESULT: 36000000
 //
 var_budget = movies.production_budget.var()
 print(var_budget)                                               RESULT: 1217478921139147.8
-  10. 
+  10. Save the standard deviation to a variable called std_budget and print the result.
+//
+std_budget = movies.production_budget.std()
+print(std_budget)                                               RESULT: 34892390.5907742
+  11. Save the mean absolute deviation to a variable called mad_budget and print the result.
+//
+mad_budget = movies.production_budget.mad()
+print(mad_budget)                                               RESULT: 26090426.818845242
+
+                                VISUALIZING QUANTITATIVE VARIABLES
+  12. Using the movies DataFrame, create a boxplot for production_budget using the boxplot() function from seaborn. Don’t forget to display the plot using plt.show() and close the plot 
+using plt.close().
+//
+sns.boxplot(x='production_budget', data=movies)
+plt.show()
+plt.close() 
+  13. Create a histogram for production_budget using the histplot() function from seaborn. From the plots, what do you notice about the distribution of movie budgets?
+//
+sns.histplot(x='production_budget', data=movies)
+plt.show()
+plt.close()
