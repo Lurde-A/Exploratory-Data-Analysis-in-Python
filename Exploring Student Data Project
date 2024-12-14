@@ -1,1 +1,51 @@
-  1. 
+GIVEN:
+# Load libraries
+  import pandas as pd
+  import numpy as np
+  import codecademylib3
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+
+# Import data
+  students = pd.read_csv('students.csv')
+  1. The provided dataframe (saved as students) includes the following variables/features:
+address: the location of the student’s home ('U' for urban and 'R' for rural)
+absences: the number of times the student was absent during the school year
+Mjob: the student’s mother’s job industry
+Fjob: the student’s father’s job industry
+math_grade: the student’s final grade in math, ranging from 0 to 20
+Use the pandas .head() method to inspect the first few rows of data.
+//
+print(students.head())                                            RESULT:
+                                                              	address	absences	Mjob	    Fjob	    math_grade
+                                                              0	U	      6	        at_home	  teacher	  6
+                                                              1	U	      4	        at_home	  other	    6
+                                                              2	U	      10	      at_home	  other	    10
+                                                              3	U	      2	        health	  services	15
+                                                              4	U	      4	        other	    other	    10
+  2. Use the pandas .describe() method to print out summary statistics for all five features in the dataset. Inspect the output. Do more students live in urban or rural locations?
+//
+print(students.describe())                                         RESULT:
+                                                              	absences	        math_grade
+                                                          count	395.0	            395.0
+                                                          mean	5.708860759493671	10.415189873417722
+                                                          std	  8.00309568710818	4.5814426109978434
+                                                          min	  0.0	              0.0
+                                                          25%	  0.0	              8.0
+                                                          50%	  4.0	              11.0
+                                                          75%	  8.0	              14.0
+                                                          max	  75.0	            20.0
+print(students.head(include='all'))                                RESULT:
+                                                              	address   absences	          Mjob	Fjob	math_grade
+                                                        count	  395	      395.0	              395	  395	  395.0
+                                                        unique	2	        nan	                5	    5	    nan
+                                                        top	    U	        nan	                other	other	nan
+                                                        freq	  307	      nan	                141	  217	  nan
+                                                        mean	  nan	      5.708860759493671	  nan	  nan	  10.415189873417722
+                                                        std	    nan	      8.00309568710818	  nan	  nan	  4.5814426109978434
+                                                        min	    nan	      0.0	                nan	  nan	  0.0
+                                                        25%	    nan	      0.0	                nan	  nan	  8.0
+                                                        50%	    nan	      4.0	                nan	  nan	  11.0
+                                                        75%	    nan	      8.0	                nan	  nan	  14.0
+                                                        max	    nan	      75.0	              nan	  nan	  20.0
+3. 
