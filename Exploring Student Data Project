@@ -67,5 +67,6 @@ print(students.math_grade.mode())                                RESULT:
                                                               	dtype: int64
 
                                       SUMMARIZE THE SPREAD OF STUDENT GRADES
-  6. 
-  6. 
+
+  6. Next, let’s summarize the spread of student grades. Calculate and print the range of the math_grade column.
+//
