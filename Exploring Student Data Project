@@ -8,6 +8,7 @@ GIVEN:
 
 # Import data
   students = pd.read_csv('students.csv')
+                                      INITIAL EXPLORATION
   1. The provided dataframe (saved as students) includes the following variables/features:
 address: the location of the student’s home ('U' for urban and 'R' for rural)
 absences: the number of times the student was absent during the school year
@@ -48,9 +49,23 @@ print(students.head(include='all'))                                RESULT:
                                                         50%	    nan	      4.0	                nan	  nan	  11.0
                                                         75%	    nan	      8.0	                nan	  nan	  14.0
                                                         max	    nan	      75.0	              nan	  nan	  20.0
+
+                                      SUMMARIZE A TYPICAL STUDENT GRADE
   3. Let’s start by trying to summarize the math_grade column. Calculate and print the mean value of math_grade.
 //
 print(students.math_grade.mean())                                RESULT:
                                                               	10.415189873417722
 
-  4. 
+  4. Next, calculate and print the median value of math_grade. Compare this value to the mean. Is it smaller? larger?
+//
+print(students.math_grade.median())                              RESULT:
+                                                              	11.0
+  5. Finally, calculate and print the mode of the math_grade column. What is the most common grade earned by students in this dataset? How different is this number from the mean and median?
+//
+print(students.math_grade.mode())                                RESULT:
+                                                              	0    10
+                                                              	dtype: int64
+
+                                      SUMMARIZE THE SPREAD OF STUDENT GRADES
+  6. 
+  6. 
