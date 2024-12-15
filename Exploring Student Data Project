@@ -48,4 +48,9 @@ print(students.head(include='all'))                                RESULT:
                                                         50%	    nan	      4.0	                nan	  nan	  11.0
                                                         75%	    nan	      8.0	                nan	  nan	  14.0
                                                         max	    nan	      75.0	              nan	  nan	  20.0
-3. 
+  3. Let’s start by trying to summarize the math_grade column. Calculate and print the mean value of math_grade.
+//
+print(students.math_grade.mean())                                RESULT:
+                                                              	10.415189873417722
+
+  4. 
