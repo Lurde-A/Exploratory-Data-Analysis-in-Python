@@ -70,3 +70,7 @@ print(students.math_grade.mode())                                RESULT:
 
   6. Next, let’s summarize the spread of student grades. Calculate and print the range of the math_grade column.
 //
+math_range = students.math_grade.max() - students.math_grade.min()
+print(math_range)                                                RESULT:
+                                                              	20
+  7. 
