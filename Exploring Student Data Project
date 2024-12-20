@@ -73,4 +73,23 @@ print(students.math_grade.mode())                                RESULT:
 math_range = students.math_grade.max() - students.math_grade.min()
 print(math_range)                                                RESULT:
                                                               	20
-  7. 
+  7. Calculate and print the standard deviation of the math_grade column. About two thirds of values fall within one standard deviation of the mean. What does this number tell you about 
+how much math grades vary?
+//
+print(students.math_grade.std())                                 RESULT:
+                                                              	4.5814426109978434 The standard deviation is ~ 4.6, the average grade is ~ 10.4. Two thirds of students are earning 
+                                                              	grades between 5.8 (10.4-4.6) and 15 (10.4+4.6).
+  8. Finally, calculate the mean absolute deviation of the math_grade column. This is the mean difference between each students’s score and the average score.
+//
+print(students.math_grade.mad())                                 RESULT:
+                                                              	3.4289889440794745
+
+                                      VISUALISE THE DISTRIBUTION OF STUDENT GRADES
+  9. Now that we’ve summarized student grades using statistics for central tendency and spread, let’s visualize the distribution using a histogram. Use the seaborn histplot() function 
+to create a histogram of math_grade.
+Note that we’ve provided code to show and clear each plot using:
+plt.show()
+plt.clf()
+This ensures that the plots don’t get layered on top of each other. Make sure that you add your code to call sns.histplot() above plt.show().
+//
+
