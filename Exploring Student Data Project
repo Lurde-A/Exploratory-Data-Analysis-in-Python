@@ -101,4 +101,29 @@ this code after the first call to plt.clf() from the above plot and before the s
 sns.boxplot(x='math_grade', data=students)
 plt.show()
 plt.clf()
-  11. 
+
+                                      SUMMARIZE MOTHERS' JOBS
+  11. The Mjob column in the dataset contains information about what the students mothers do as a profession. Summarize the Mjob column by printing the number of students who have mothers 
+with each job type. Which value of Mjob is most common?
+//
+print(students.Mjob.value_counts())                              RESULT:
+                                                              		        Mjob
+                                                              	other	    141
+                                                              	services	103
+                                                              	at_home  	59
+                                                              	teacher	  58
+                                                              	health	  34
+  12. Now, calculate and print the proportion of students who have mothers with each job type. What proportion of students have mothers who work in health?
+//
+print(students.Mjob.value_counts(normalize=True))                RESULT:
+                                                              		        Mjob
+                                                              	other    	0.3569620253164557
+                                                              	services	0.2607594936708861
+                                                              	at_home	  0.14936708860759493
+                                                              	teacher	  0.1468354430379747
+                                                              	health	  0.08607594936708861
+
+                                      VISUALIZE THE DISTRIBUTION OF MOTHERS' JOBS
+  13. Now that we’ve used summary statistics to understand the relative frequencies of different mothers’ jobs, let’s visualize the same information with a bar chart. Use the seaborn 
+countplot() function to create a bar chart of the Mjob variable.
+//
