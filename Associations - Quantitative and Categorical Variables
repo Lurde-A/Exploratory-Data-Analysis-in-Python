@@ -1,1 +1,134 @@
+                                      INTRODUCTION
+  1. The dataset described above has been saved for you in the workspace as a Pandas dataframe named students. Inspect the first five rows of students using the .head() method. 
+Take a look at the other columns. Which are categorical and which are quantitative?
+//
+print(students.head())                                  RESULT:
+                                                      	school	address	absences	Mjob	    Fjob	    G3
+                                                      0	GP	    U      	6	        at_home	  teacher  	6
+                                                      1	GP	    U	      4        	at_home	  other    	6
+                                                      2	GP	    U	      10      	at_home	  other	    10
+                                                      3	GP	    U	      2	        health	  services	15
+                                                      4	GP	    U	      4	        other    	other	    10
+  2. Suppose that we want to know whether there is an association between student math scores (G3) and the student’s address (urban or rural). Separate out G3 scores into two separate 
+lists: one for students who live in an urban location ('U') and one for students who live in a rural location ('R'). Name these lists scores_urban and scores_rural.
+//
+scores_urban = students.G3[students.address == 'U']
+scores_rural = students.G3[students.address == 'R']
 
+                                      MEAN AND MEDIAN DIFFERENCES
+  3. Your lists from the previous exercise (scores_urban and scores_rural) have been created for you in script.py. Use these lists to calculate the mean score for both groups. 
+Store the results as scores_urban_mean and scores_rural_mean, respectively.
+//
+scores_urban_mean = np.mean(scores_urban)
+scores_rural_mean = np.mean(scores_rural)
+print('Mean score - students w/ urban address:')
+print(scores_urban_mean)
+print('Mean score - students w/ rural address:')
+print(scores_rural_mean)                                RESULT:
+                                                      	Mean score - students w/ urban address:
+                                                      10.674267100977199
+                                                      	Mean score - students w/ rural address:
+                                                      9.511363636363637
+  4. Calculate the mean difference between the two groups and save the result as mean_diff. Based on this number, do you think the variables are associated? Why or why not?
+//
+mean_diff = scores_urban_mean - scores_rural_mean
+print('Mean difference:')
+print(mean_diff)                                        RESULT:
+                                                      	Mean difference:
+                                                      1.1629034646135619
+  5. Use the lists to calculate the median score for both groups. Store the results as scores_urban_median, scores_rural_median, respectively. Print out the result of each variable.
+//
+scores_urban_median = np.median(scores_urban)
+scores_rural_median = np.median(scores_rural)
+print('Median score - students w/ urban address:')
+print(scores_urban_median)
+print('Median score - students w/ rural address:')
+print(scores_rural_median)                              RESULT:
+                                                      	Median score - students w/ urban address:
+                                                      11.0
+                                                      	Median score - students w/ rural address:
+                                                      10.0
+  6. Calculate the median difference between the two groups, save the result as median_diff. Based on this value, do you think the variables are associated? Why or why not?
+//
+median_diff = scores_urban_median - scores_rural_median
+print('Median difference:')
+print(median_diff)                                      RESULT:
+                                                      	Median difference:
+                                                      1.0
+
+                                      SIDE BY SIDE BOX PLOTS
+  7. Generate side-by-side boxplots for student scores (G3) by address. Is there any overlap between the boxes? Do you think the variables are associated?
+//
+sns.boxplot(data=students, x='address', y='G3')
+plt.show()
+
+                                      INSPECTING OVERLAPPING HISTOGRAMS
+  8. Your lists from the previous exercise (scores_urban and scores_rural) have been created for you in script.py. Use them to create an overlaid histogram of scores for students 
+who live in urban and rural locations. Remember to use different colors for each histogram, set normed = True, alpha = 0.5, and use the labels 'Urban' and 'Rural', respectively.
+Based on the overlaid histogram, do you think there is an association between these two variables?
+GIVEN:
+import numpy as np
+import pandas as pd
+import codecademylib3
+import matplotlib.pyplot as plt 
+students = pd.read_csv('students.csv')
+
+scores_urban = students.G3[students.address == 'U']
+scores_rural = students.G3[students.address == 'R']
+//
+plt.hist(scores_urban, color='blue', label='Urban', normed = True, alpha=0.5)
+plt.hist(scores_rural, color='red', label='Rural', normed = True, alpha=0.5)
+plt.legend()
+plt.show()
+
+                                      EXPLORING NON-BINARY CATEGORICAL VARIABLES
+  9. Create a side-by-side boxplot to assess whether there is an association between students’ math score (G3) and their fathers’ job (Fjob). Do you think there is an association 
+between these variables? For which pairs of groups do you see differences?
+GIVEN:
+import pandas as pd
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import codecademylib3
+
+students = pd.read_csv('students.csv')
+//
+sns.boxplot(data=students, x='Fjob', y='G3')
+plt.show()
+
+                                      REVIEW
+GIVEN:
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import codecademylib3
+
+titanic = pd.read_csv('titanic.csv')
+
+  1. Calculate the difference in mean fare paid by those who survived and those who died. Which group paid a higher average fare?
+//
+print(titanic.head())                            RESULT:
+                                      PassengerId	Survived	Pclass	Name	                                              Sex	    Age	  SibSp	  Parch  	Ticket	          Fare	  Cabin	  Embarked
+                                    0	1	          0	        3	      Braund, Mr. Owen Harris	                            male  	22.0	1	      0	      A/5 21171	        7.25	  nan	    S
+                                    1	2	          1	        1	      Cumings, Mrs. John Bradley (Florence Briggs Thayer)	female	38.0	1	      0	      PC 17599	        71.2833	C85	    C
+                                    2	3	          1	        3	      Heikkinen, Miss. Laina	                            female	26.0	0      	0	      STON/O2. 3101282	7.925	  nan	    S
+                                    3	4	          1	        1	      Futrelle, Mrs. Jacques Heath (Lily May Peel)	      female	35.0	1	      0	      113803	          53.1  	C123  	S
+                                    4	5	          0	        3	      Allen, Mr. William Henry	                          male	  35.0	0	      0	      373450	          8.05  	nan	    S
+Surv_fare = titanic.Fare[titanic.Survived == 1]
+Died_fare = titanic.Fare[titanic.Survived == 0]
+
+mean_S_f = np.mean(Surv_fare)
+print('Mean fare price of those who survived: ')
+print(mean_S_f)                            RESULT:
+                                          Mean fare price of those who survived: 
+                                          37.802998475609755
+mean_D_f = np.mean(Died_fare)
+print('Mean fare price of those who died: ')
+print(mean_D_f)                            RESULT:
+                                          Mean fare price of those who died: 
+                                          19.720800920810312
+Mean_dif = mean_S_f - mean_D_f
+print('Mean difference: ')
+print(Mean_dif)                            RESULT:
+                                          Mean difference: 
+                                          18.082197554799443
