@@ -127,3 +127,11 @@ print(students.Mjob.value_counts(normalize=True))                RESULT:
   13. Now that we’ve used summary statistics to understand the relative frequencies of different mothers’ jobs, let’s visualize the same information with a bar chart. Use the seaborn 
 countplot() function to create a bar chart of the Mjob variable.
 //
+sns.countplot(x='Mjob', data=students)
+plt.show()
+plt.clf()
+  14. We can also visualize the same information using a pie chart. Create a pie chart of the Mjob column.
+//
+students.Mjob.value_counts().plot.pie()
+plt.show()
+plt.close()
