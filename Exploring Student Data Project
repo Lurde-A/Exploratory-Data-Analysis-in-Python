@@ -92,4 +92,13 @@ plt.show()
 plt.clf()
 This ensures that the plots don’t get layered on top of each other. Make sure that you add your code to call sns.histplot() above plt.show().
 //
-
+sns.histplot(x='math_grade', data=students)
+plt.show()
+plt.clf()
+  10. Another way to visualize the distribution of a quantitative variable is using a box plot. Use the seaborn boxplot() function to create a boxplot of math_grade. Make sure to add 
+this code after the first call to plt.clf() from the above plot and before the second call to plt.show().
+//
+sns.boxplot(x='math_grade', data=students)
+plt.show()
+plt.clf()
+  11. 
