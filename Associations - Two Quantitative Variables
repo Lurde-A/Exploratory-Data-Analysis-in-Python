@@ -1,1 +1,28 @@
+                                      INTRODUCTION
+  1. The dataset described above has been saved for you as a pandas dataframe named housing. Use the .head() method to print the first 10 rows and inspect some more of the data. 
+What are some other quantitative variables that might be related to each other?
+//
+print(housing.head(10))                                 RESULT:
+                                                      	price	  type	      sqfeet	beds	baths	  lat	        long
+                                                      0	615	    apartment	  364	    0	    1.0	    35.1653	 -  101.884
+                                                      1	1346	  apartment	  816	    1	    1.0	    32.9865  -  96.686
+                                                      2	900	    apartment	  500	    1	    1.0	    30.2355	 -  97.7292
+                                                      3	650	    apartment	  700	    1	    1.0	    26.1923	 -  98.2657
+                                                      4	1330	  apartment	  1040	  2	    2.0	    30.638	 -  96.294
+                                                      5	915	    apartment	  620	    1	    1.0	    29.8754	 -  97.9404
+                                                      6	1600	  house	      1578	  3	    2.0	    32.6412	 -  97.1058
+                                                      7	349	    apartment	  275	    0	    1.0	    33.5865	 -  101.861
+                                                      8	695	    house	      650	    1	    1.0	    31.5525	 -  97.1604
+                                                      9	889	    apartment	  650	    1	    1.5	    29.8754	 -  97.9404
 
+                                      SCATTER PLOTS
+  2. The housing data has been saved for you as a dataframe named housing in script.py. Create a scatter plot to see if there is an association between the number of bedrooms (beds) 
+and the area (sqfeet) of a rental. Use Number of Bedrooms for the x-axis of your scatter plot. Do you think these variables are associated? If so, is the relationship what you expected?
+//
+plt.scatter( x = housing.beds, y = housing.sqfeet)
+plt.xlabel('Number of Bedrooms')
+plt.ylabel('Area(Square Feet')
+plt.show()
+
+                                      EXPLORING COVARIANCE
+  3. 
