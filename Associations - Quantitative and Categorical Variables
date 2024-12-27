@@ -132,3 +132,33 @@ print('Mean difference: ')
 print(Mean_dif)                            RESULT:
                                           Mean difference: 
                                           18.082197554799443
+
+  2. Calculate the difference in median fare for those who survived and those who died.
+//
+mead_S_f = np.median(Surv_fare)
+print('Median fare price of those who survived: ')
+print(mead_S_f)                            RESULT:
+                                          Median fare price of those who survived: 
+                                          26.0
+mead_D_f = np.median(Died_fare)
+print('Median fare price of those who died: ')
+print(mead_D_f)                            RESULT:
+                                          Median fare price of those who died: 
+                                          10.4625
+Mead_dif = mead_S_f - mead_D_f
+print('Mean difference: ')
+print(Mead_dif)                            RESULT:
+                                          Median difference: 
+                                          15.5375
+
+  3. Create side-by-side box plots of fares by survival. Now that you can see the spread of the data, do the mean/median differences seem relatively small or large?
+//
+sns.boxplot(data=titanic, x='Survived', y='Fare')
+plt.show()                            RESULT: The differences seem significant. 
+  4. Create overlapping histograms of fares by survival (you’ll have to delete or comment out your box plot code before you try to make a histogram). Does this provide any additional 
+information?
+//
+plt.hist(Surv_fare, color = 'blue', label='Survived', normed = True, alpha = 0.5)
+plt.hist(Died_fare, color = 'red', label='Died', normed = True, alpha = 0.5)
+plt.legend()
+plt.show()
