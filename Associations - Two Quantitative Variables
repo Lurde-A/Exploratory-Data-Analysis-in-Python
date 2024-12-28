@@ -64,7 +64,46 @@ reflect the strength of the relationship between these variables?
 //
 corr_sleep_performance, p = pearsonr(sleep.hours_sleep, sleep.performance)
 print(corr_sleep_performance)                           RESULT:
-                                                      The correlation result is only 0.28 which does not reflect an existing strong relationship even though the parabolic line 
+                                                      The correlation result is only ~0.28 which does not reflect an existing strong relationship even though the parabolic line 
                                                       is very easy and clear to indicate in the appeared graph.
 
-
+                                      REVIEW
+As a final exercise, a new dataset named penguins has been uploaded for you in script.py. This dataset contains various measurements for a sample of penguins. To practice the skills 
+learned in this lesson, here are some things to try:
+  1. Inspect the first few rows of data.
+//
+print(penguins.head())                                   RESULT:  
+                                                        species	bill_length_mm	bill_depth_mm	flipper_length_mm	body_mass_g	sex
+                                                      0	Adelie	39.1	          18.7	        181.0	3750.0	    male
+                                                      1	Adelie	39.5	          17.4	        186.0	3800.0	    female
+                                                      2	Adelie	40.3	          18.0	        195.0	3250.0	    female
+                                                      3	Adelie	36.7	          19.3	        193.0	3450.0	    female
+                                                      4	Adelie	39.3	          20.6	        190.0	3650.0	    male
+  2. Create a scatter plot of flipper length (flipper_length_mm) and body mass (body_mass_g).
+//
+plt.scatter(x = penguins.body_mass_g, y = penguins.flipper_length_mm)
+plt.xlabel ("The mass of the penguin's body")
+plt.ylabel ("The length of the penguin's flipper")
+plt.show()
+  3. Inspect your plot. What is the relationship between these variables?
+//
++- Linear 
+  4. Calculate the covariance for these two variables.
+//
+cov_peng_mass_flip_len = np.cov(penguins.body_mass_g, penguins.flipper_length_mm)
+print("The covariance matrix: ")
+print(cov_peng_mass_flip_len)                           RESULT:
+                                                      [[648372.5   9852.2]
+                                                      [  9852.2    196.4]]
+print("The covariance:")
+print(cov_peng_mass_flip_len[1][0])                     RESULT:
+                                                      The covariance:
+                                                      9852.191649480805
+  5. Calculate the correlation for these two variables. Does this number make sense given the plot you created?
+//
+corr_peng_mass_fl_leng, p = pearsonr(penguins.body_mass_g, penguins.flipper_length_mm)
+print("The correlation between penguin's mass and his flipper length: ")
+print(corr_peng_mass_fl_leng)                           RESULT:
+                                                      The correlation between penguin's mass and his flipper length: 
+                                                      0.8729788985653615
+                                                      Makes all the sense :) The heavier the penguin the longer the flipper <3
