@@ -25,4 +25,46 @@ plt.ylabel('Area(Square Feet')
 plt.show()
 
                                       EXPLORING COVARIANCE
-  3. 
+  3. Use the cov() function from NumPy to calculate the covariance matrix for the sqfeet variable and the beds variable. Save the covariance matrix as cov_mat_sqfeet_beds.
+  4. Print out the value stored in the variable cov_mat_sqfeet_beds.
+//
+cov_mat_sqfeet_beds = np.cov(housing.sqfeet, housing.beds)
+print(cov_mat_sqfeet_beds)                              RESULT:
+                                                      [[110669.     228.2]
+                                                       [   228.2      0.7]]
+  5. Look at the covariance matrix you just printed and find the covariance of sqfeet and beds. Save that number as a variable named cov_sqfeet_beds.
+//
+cov_sqfeet_beds = 228.2
+
+                                      CORRELATION PAT I
+  6. Use the pearsonr function from scipy.stats to calculate the correlation between sqfeet and beds. Store the result in a variable named corr_sqfeet_beds and print out the result. 
+How strong is the linear association between these variables?
+//
+corr_sqfeet_beds, p = pearsonr(housing.sqfeet, housing.beds)
+print(corr_sqfeet_beds)                                 RESULT:
+                                                      0.8060022524416223
+  7. Generate a scatter plot of beds and sqfeet again. Does the correlation value make sense?
+//
+plt.scatter(x = housing.beds, y = housing.sqfeet)
+plt.xlabel = 'Number of beds'
+plt.ylabel = 'Square feet of the Apartment'
+plt.show()
+
+                                      CORRELATION PAT II
+  8. A simulated dataset named sleep has been loaded for you in script.py. The hypothetical data contains two columns:
+hours_sleep: the number of hours that a person slept
+performance: that person’s performance score on a physical task the next day
+Create a scatter plot of hours_sleep (on the x-axis) and performance (on the y-axis). What is the relationship between these variables?
+//
+plt.scatter(x = sleep.hours_sleep, y = sleep.performance)
+plt.show()                                              RESULT:
+                                                      Linear dependance represented in a Parabolic function appears (upside down - where a<0 (ax^2 + bx +c)).
+  9. Calculate the correlation for hours_sleep and performance and save the result as corr_sleep_performance. Then, print out corr_sleep_performance. Does the correlation accurately 
+reflect the strength of the relationship between these variables?
+//
+corr_sleep_performance, p = pearsonr(sleep.hours_sleep, sleep.performance)
+print(corr_sleep_performance)                           RESULT:
+                                                      The correlation result is only 0.28 which does not reflect an existing strong relationship even though the parabolic line 
+                                                      is very easy and clear to indicate in the appeared graph.
+
+
