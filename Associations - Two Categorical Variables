@@ -60,3 +60,62 @@ special_authority_freq = pd.crosstab(npi.special, npi.authority)
   # save the table of proportions as special_authority_prop:
 special_authority_prop = special_authority_freq/len(npi)
 //
+authority_marginals = special_authority_prop.sum(axis=0)
+print(authority_marginals)                              RESULT:
+                                                      	authority
+                                                      	no     0.567541
+                                                      	yes    0.432459
+  5. Use special_authority_prop to calculate the marginal proportions for the special variable and save the result as special_marginals. Print out special_marginals. Do more people see 
+themselves as special or not special?
+//
+special_marginals = special_authority_prop.sum(axis=1)
+print(special_marginals)                                RESULT:
+                                                      	special
+                                                      	no     0.538344
+                                                      	yes    0.461656
+
+                                      EXPECTED CONTINGENCY TABLES
+GIVEN:
+import pandas as pd
+import numpy as np
+from scipy.stats import chi2_contingency
+npi = pd.read_csv("npi_sample.csv")
+special_authority_freq = pd.crosstab(npi.special, npi.authority)
+print("observed contingency table:")
+print(special_authority_freq)
+  # calculate the expected contingency table if there's no association and save it as expected
+  # print out the expected frequency table
+print("expected contingency table (no association):")
+  6. The contingency table of frequencies for the special and authority questions is saved for you in script.py as special_authority_freq. Use the chi2_contingency() function 
+to calculate the expected frequency table for these two questions if there were no association. Save the result as expected.
+  7. Use np.round() to print out the expected contingency table, with values rounded to the nearest whole number. Compare this to the observed frequency table. 
+How much do the numbers in these tables differ?
+//
+# calculate the expected contingency table if there's no association and save it as expected
+chi2, pval, dof, expected = chi2_contingency(special_authority_freq)
+print("expected contingency table (no association):")
+print(np.round(expected))                               RESULT:
+                                                      	expected contingency table (no association):
+                                                      	[[3390. 2584.]
+                                                       	[2908. 2215.]]
+
+                                      THE CHI-SQUARE STATISTIC
+  8. The contingency table of frequencies for the special and authority questions is saved for you in script.py as special_authority_freq. Use the chi2_contingency() function 
+to calculate Chi-Square statistic for these two variables. Save the result as chi2 and print it out. Do these variables appear to be associated?
+GIVEN:
+import pandas as pd
+import numpy as np
+from scipy.stats import chi2_contingency
+npi = pd.read_csv("npi_sample.csv")
+special_authority_freq = pd.crosstab(npi.special, npi.authority)
+//
+print(special_authority_freq)
+chi2, pval, dof, expected = chi2_contingency(special_authority_freq)         RESULT:
+                                                                           	 authority    no   yes
+                                                      	                   	 special              
+                                                      	                   	 no         4069  1905
+                                                      	                   	 yes        2229  2894
+print(chi2)                                              RESULT:
+                                                      	 679.1219526170606
+                                      REVIEW
+  1. 
