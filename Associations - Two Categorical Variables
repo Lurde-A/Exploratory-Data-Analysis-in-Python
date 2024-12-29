@@ -118,4 +118,5 @@ chi2, pval, dof, expected = chi2_contingency(special_authority_freq)         RES
 print(chi2)                                              RESULT:
                                                       	 679.1219526170606
                                       REVIEW
-  1. 
+  1. Which other pairs of questions might be associated (or not)? Use the workspace and your newfound skills to investigate for yourself!
+//
