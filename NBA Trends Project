@@ -47,4 +47,58 @@ print(nets_pts_10.head())                                      RESULT:
                                                          21730	104
                                                          21733	68
                                                          21738	94
-  2. 
+  2.  Calculate the difference between the two teams’ average points scored and save the result as diff_means_2010. Based on this value, do you think fran_id and pts are associated? 
+Why or why not?
+//
+knicks_mean = np.mean(knicks_pts_10)
+print(knicks_mean)                                            RESULT:
+                                                              102.10975609756098
+nets_mean = np.mean(nets_pts_10)
+print(nets_mean)                                              RESULT:
+                                                              92.3780487804878
+diff = knicks_mean - nets_mean
+print(diff)                                                   RESULT:
+                                                              9.731707317073173
+            OR 
+diff_means_2010 = knicks_pts_10.mean() - nets_pts_10.mean()
+print(diff_means_2010)                                        RESULT:
+                                                              9.731707317073173
+  3. Rather than comparing means, it’s useful look at the full distribution of values to understand whether a difference in means is meaningful. Create a set of overlapping histograms 
+that can be used to compare the points scored for the Knicks compared to the Nets. Use the series you created in the previous step (1) and the code below to create the plot. 
+Do the distributions appear to be the same?
+//
+plt.hist(knicks_pts_10, color='blue', label='Knicks points', normed = True, alpha = 0.8)
+plt.hist(nets_pts_10, color='red', label='Knicks points', normed = True, alpha = 0.8)
+plt.legend()
+plt.show()
+  4. Now, let’s compare the 2010 games to 2014. Replicate the steps from the previous three exercises using nba_2014. First, calculate the mean difference between the two teams points 
+scored. Save and print the value as diff_means_2014. Did the difference in points get larger or smaller in 2014? Then, plot the overlapping histograms. Does the mean difference you 
+calculated make sense?
+//
+knicks_pts_14 = nba_2014.pts[nba_2014.fran_id == 'Knicks']
+print(knicks_pts_14.head())                                    RESULT:
+                                                                pts
+                                                         23469	90
+                                                         23473	81
+                                                         23480	100
+                                                         23486	97
+                                                         23490	101
+nets_pts_14 = nba_2014.pts[nba_2014.fran_id == 'Nets']
+print(nets_pts_14.head())                                      RESULT:
+                                                                pts
+                                                         23468	94
+                                                         23475	101
+                                                         23482	86
+                                                         23484	104
+                                                         23494	108
+diff_means_2014 = knicks_pts_14.mean() - nets_pts_14.mean()
+print(diff_means_2014)                                         RESULT:
+                                                               0.44706798131809933
+plt.hist(knicks_pts_14, color='green', label='Knicks points', normed = True, alpha = 0.8)
+plt.hist(nets_pts_14, color='yellow', label='Nets points', normed = True, alpha = 0.8)
+plt.legend()
+plt.show()
+  5. For the remainder of this project, we’ll focus on data from 2010. Let’s now include all teams in the dataset and investigate the relationship between franchise and points scored 
+per game. Using nba_2010, generate side-by-side boxplots with points scored (pts) on the y-axis and team (fran_id) on the x-axis. Is there any overlap between the boxes? 
+Does this chart suggest that fran_id and pts are associated? Which pairs of teams, if any, earn different average scores per game?
+//
