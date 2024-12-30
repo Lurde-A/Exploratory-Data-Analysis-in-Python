@@ -1,1 +1,50 @@
+GIVEN:
+import numpy as np
+import pandas as pd
+from scipy.stats import pearsonr, chi2_contingency
+import matplotlib.pyplot as plt
+import seaborn as sns
+import codecademylib3
+np.set_printoptions(suppress=True, precision = 2)
+nba = pd.read_csv('./nba_games.csv')
+  # Subset Data to 2010 Season, 2014 Season
+nba_2010 = nba[nba.year_id == 2010]
+nba_2014 = nba[nba.year_id == 2014]
+print(nba_2010.head())                                    RESULT:
+                                                          game_id	      year_id	fran_id	  opp_fran	    game_location	  is_playoffs	pts	opp_pts	game_result	forecast	  point_diff
+                                                    21717	200910270CLE	2010	  Celtics	  Cavaliers	    A	              0	          95	89	    W	          0.27747208	6
+                                                    21718	200910280BOS	2010	  Celtics	  Hornets	      H	              0	          92	59	    W	          0.81461924	33
+                                                    21719	200910280MIA	2010	  Knicks	  Heat	        A	              0	          93	115	    L	          0.25875455	-22
+                                                    21720	200910280MIN	2010	  Nets	    Timberwolves	A	              0	          93	95	    L	          0.47515517	-2
+                                                    21721	200910280OKC	2010	  Thunder	  Kings        	H	              0	          102	89	    W	          0.71676362	13
+print(nba_2014.head())                                    RESULT:
+                                                          game_id	      year_id	fran_id	  opp_fran	    game_location	  is_playoffs	pts	opp_pts	game_result	forecast	  point_diff
+                                                    23468	201310300CLE	2014	  Nets	    Cavaliers	    A	              0	          94	98    	L	          0.61198127	-4
+                                                    23469	201310300NYK	2014	  Knicks	  Bucks	        H	              0	          90	83    	W	          0.79315007	7
+                                                    23470	201310300SAS	2014	  Spurs	    Grizzlies    	H	              0	          101	94	    W	          0.69297957	7
+                                                    23471	201310300TOR	2014	  Celtics	  Raptors	      A	              0	          87	93	    L	          0.36123306	-6
+                                                    23472	201310300UTA	2014	  Thunder	  Jazz	        A	              0	          101	98	    W	          0.52605593	3
 
+                                      ANALYZING RELATIONSHIPS BETWEEN QUANT ANDCATEGORICAL
+  1. 
+In script.py, the data has been subsetted for you into two smaller datasets: games from 2010 (named nba_2010) and games from 2014 (named nba_2014). To start, let’s focus on the 2010 data.
+Suppose you want to compare the knicks to the nets with respect to points earned per game. Using the pts column from the nba_2010 DataFrame, create two series named knicks_pts_10 
+(fran_id = "Knicks") and nets_pts_10(fran_id = "Nets") that represent the points each team has scored in their games.
+//
+knicks_pts_10 = nba_2010.pts[nba_2010.fran_id == 'Knicks']
+print(knicks_pts_10.head())                                    RESULT:
+                                                                pts
+                                                         21719	93
+                                                         21725	100
+                                                         21728	127
+                                                         21734	117
+                                                         21739	89
+nets_pts_10 = nba_2010.pts[nba_2010.fran_id == 'Nets']
+print(nets_pts_10.head())                                      RESULT:
+                                                                pts
+                                                         21720	93
+                                                         21727	85
+                                                         21730	104
+                                                         21733	68
+                                                         21738	94
+  2. 
