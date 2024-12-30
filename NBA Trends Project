@@ -149,4 +149,15 @@ print("The covariance between forecast and point difference is:")
 print(point_diff_forecast_cov[0][1])                           RESULT:
                                                                The covariance between forecast and point difference is:
                                                                1.3746125676458802
-  10. 
+  10. Because 538’s forecast variable is reported as a probability (not a binary), we can calculate the strength of the correlation. Using nba_2010, calculate the correlation between 
+forecast and point_diff. Call this point_diff_forecast_corr. Save and print your result. Does this value suggest an association between the two variables?
+//
+point_diff_forecast_corr, p=pearsonr(nba_2010.forecast, nba_2010.point_diff)
+print(point_diff_forecast_corr)                                RESULT:
+                                                               0.44020887084680815
+  11. Generate a scatter plot of forecast (on the x-axis) and point_diff (on the y-axis). Does the correlation value make sense?
+//
+plt.clf()
+plt.scatter(x=nba_2010.forecast, y=nba_2010.point_diff)
+plt.show()                                                     RESULT: 
+                                                               It does.
